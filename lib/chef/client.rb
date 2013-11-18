@@ -382,7 +382,7 @@ class Chef
       end
       # We now have the client key, and should use it from now on.
       @rest = Chef::REST.new(config[:chef_server_url], client_name, config[:client_key])
-      @resource_reporter = Chef::ResourceReporter.new(@rest)
+      @resource_reporter = Chef::ResourceReporter.new(client_name)
       @events.register(@resource_reporter)
     rescue Exception => e
       # TODO: munge exception so a semantic failure message can be given to the
